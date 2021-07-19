@@ -60,7 +60,9 @@ function updateMain(){
     ["researchAmt",player.research,0],
     ["researchNextAt",10**(researchNextAt()%1),0,Math.floor(researchNextAt())],
     ["researchGain",researchGain(),0],
-    ["currentautostudy",player.autostudy,0]
+    ["currentautostudy",player.autostudy,0],
+    ["totalachs",Object.keys(achs).length,0],
+    ["achsEarned",player.achs.length,0]
   ]
   
   vars.forEach(v=>{
