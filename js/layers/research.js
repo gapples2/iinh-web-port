@@ -88,6 +88,8 @@ const research = [
   
   // more buildings!
   ["+5 building max for every building except hexadecatupler.",4e5,1,5],
+  
+  // inflation
   ["I'm getting bored. 5x successor max, 4x doubler max, 3x tripler max, and 2x quadrupler max. This, my friends, is the explosion upgrade.",2e6,1,1],
   
   // even more points
@@ -123,19 +125,19 @@ function createResearch(){
         borderColor = "#00ff00"
         break;
       case 1:
-        borderColor = ""
+        borderColor = "blue"
         break;
       case 2:
         borderColor = "#ff0000"
         break;
     }
     
-    re.style.cssText = "border: 3px solid "+borderColor+";font-size:14px;width:30px;height:30px"
+    re.style.cssText = "border: 3px solid "+borderColor+";font-size:14px;width:30px;height:30px;color:white"
     if(type==0&&r[3]||type!=0&&r[4]){if(!(type==0&&r[3]())||(!type!=0&&r[4]()))re.style.display="none"}
     re.innerText = row+"x"+(num%20+1)
     
     re.addEventListener("mouseover",()=>{
-      document.getElementById("lookingAtResearch").innerHTML = "<h4>Research "+row+"x"+(num%20+1)+"</h4>"+r[0]+"<br><br>Cost: "+format(r[1],0)+" research<br>Level "+researchLvl(row+"x"+(num%20+1))+"/"+max
+      document.getElementById("lookingAtResearch").innerHTML = "<h4 style='color:inherit'>Research "+row+"x"+(num%20+1)+"</h4>"+r[0]+"<br><br>Cost: "+format(r[1],0)+" research<br>Level "+researchLvl(row+"x"+(num%20+1))+"/"+max
     })
     re.addEventListener("click",()=>{buyResearch(row+"x"+(num%20+1))})
     
@@ -163,7 +165,7 @@ function updateResearch(){
     let lvl = researchLvl(id)
     let max = research[num][3]||1
     let color = ""
-    if(lvl==max)color="#007700"
+    if(lvl==max)color="#009900"
     else{
       if(lvl>=1)color="#aa00aa"
       else color = ""

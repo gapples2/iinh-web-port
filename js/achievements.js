@@ -90,22 +90,22 @@ const achs = {
   },
   16:{
     name: "This isn't a challenge....",
-    desc: "Complete <b>Normal</b> once.",
+    desc: "Complete Normal once.",
     complete(){return challengeCompletions(1)>=1}
   },
   17:{
     name: '"In these trying times..."',
-    desc: "Complete <b>Upgrade Shortage</b> once.",
+    desc: "Complete Upgrade Shortage once.",
     complete(){return challengeCompletions(2)>=1}
   },
   18:{
     name: "WORK HARDER GAPPLES",
-    desc: "Complete <b>Speghetti Code</b> once.",
+    desc: "Complete Speghetti Code once.",
     complete(){return challengeCompletions(3)>=1}
   },
   19:{
     name: "You didn't need them anyway",
-    desc: "Complete <b>Empty Mines</b> once.",
+    desc: "Complete Empty Mines once.",
     complete(){return challengeCompletions(4)>=1}
   },
   20:{
@@ -119,7 +119,7 @@ const achs = {
     complete(){return player.research>=1}
   },
   22:{
-    name: "Finally, obanium",
+    name: "Finally, obamium",
     desc: "Study 10 times.",
     complete(){return player.researchResets>=10}
   },
@@ -145,7 +145,7 @@ const achs = {
   },
   27:{
     name: "Sadistic",
-    desc: "Complete <b>Horrible Gameplay</b> once.",
+    desc: "Complete Horrible Gameplay once.",
     complete(){return challengeCompletions(5)>=1}
   },
   28:{
@@ -169,8 +169,8 @@ function createAch(id){
   
   let ach = document.createElement("td")
   ach.id = "ach-"+id
-  ach.innerHTML = "<h3 style='margin:0px'>"+achs[id].name+"</h3><br>"+achs[id].desc
-  ach.style = "height:154px;min-width:154px;border: 2px solid;display:none"
+  ach.innerHTML = "<h3 style='margin:0px;background-color:inherit;color:black'>"+achs[id].name+"</h3><br>"+achs[id].desc
+  ach.style = "height:154px;min-width:154px;border: 2px solid;display:none;color:black"
   
   tr.appendChild(ach)
 }
@@ -186,9 +186,11 @@ function updateAchs(){
       let id = x*num+y
       if(!achs[id])continue;
       let ach = document.getElementById("ach-"+id)
-      ach.style["border-color"]=player.achs.includes(id)?"#00ff00":"#ff0000"
+      let ac = player.achs.includes(id)
+      ach.style["border-color"]=ac?"#00ff00":"#ff0000"
+      ach.style["background-color"]=ac?"#ccffcc":"#ffcccc"
       ach.style.display=unlockedAch(id)?"":"none"
-      if(!player.achs.includes(id)&&achs[id].complete()&&unlockedAch(id))player.achs.push(id)
+      if(!ac&&achs[id].complete()&&unlockedAch(id))player.achs.push(id)
     }
   }
 }
@@ -202,5 +204,3 @@ function loadAchs(){
     }
   }
 }
-
-// Still Alive - Max the third row of research.

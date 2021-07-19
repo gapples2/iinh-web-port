@@ -46,11 +46,11 @@ function updateRefactor(){
     m=Number(m)
     let td = document.getElementById("refactorMilestone-"+m)
     let has = hasRefactorMilestone(m)
-    td.style.borderColor = has?"#00ff00":"#ff0000"
-    td.style["background-color"] = has?"#ccffcc":"#ffcccc"
+    td.style.borderColor = has?"#ff00ff":"#ff0000"
+    td.style["background-color"] = has?"#ffccff":"#ffcccc"
     td.style.display = unlockedRefactorMilestone(m)?"":"none"
     
-    document.getElementById("refactorMilestoneH3-"+m).style["background-color"] = has?"#ccffcc":"#ffcccc"
+    document.getElementById("refactorMilestoneH3-"+m).style["background-color"] = has?"#ffccff":"#ffcccc"
     
     if(!has&&player.totalrp>=refactorMilestoneData[m].req)player.rpMilestones.push(m)
   })

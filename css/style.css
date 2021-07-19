@@ -1,6 +1,8 @@
 root:{
   --bgColor: "#ffffff";
-  --color: "#000000"
+  --color: "#000000";
+  --gemTxtColor: "#0000ff";
+  --refTxtColor: "#ff00ff";
 }
 
 *{
@@ -19,4 +21,16 @@ root:{
 .settings{
   width: 100px;
   height: 25px;
+}
+
+#refactorTabButton{
+  border-color: magenta;
+}
+
+#challengeTabButton{
+  border-color: red;
+}
+
+#researchTabButton{
+  border-color: blue;
 }

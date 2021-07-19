@@ -78,7 +78,7 @@ function buyGemUpg(id){
 
 function loadGems(){
   if(unlocked("gems")){
-    document.getElementById("gems").style.display="block"
+    document.getElementById("gemTabButton").style.display=""
     
     let num = Math.ceil(Math.sqrt(Object.keys(gemUpgData).length))
     for(let x=0;x<num;x++){  
@@ -98,7 +98,8 @@ function updateGems(){
       let upg = document.getElementById("gemUpgButton-"+(x*num+y))
       let id = x*num+y
       upg.style.display=(unlockedGemUpg(id)?"block":"none")
-      upg.style["border-color"]=(hasGemUpg(id)?"green":(player.gems>=gemUpgData[id].cost?"#bbbb00":"red"))
+      upg.style["border-color"]=(hasGemUpg(id)?"#0000ff":(player.gems>=gemUpgData[id].cost?"#bbbb00":"#ff0000"))
+      upg.style["background-color"]=(hasGemUpg(id)?"#00ccff":(player.gems>=gemUpgData[id].cost?"#ffffcc":"#ffcccc"))
     }
   }
 }
@@ -119,7 +120,7 @@ function createGemUpg(id){
   button.id = "gemUpgButton-"+id
   button.onclick = function(){buyGemUpg(id)}
   button.innerHTML = gemUpgData[id].desc+"<br><br>"+gemUpgData[id].cost+" gem"+(gemUpgData[id].cost==1?"":"s")
-  let css = "height:100px;width:150px;border: 2px solid "
+  let css = "height:100px;width:150px;color:black;border: 2px solid "
   if(hasGemUpg(id))css+="green"
   else css+="red"
   button.style.cssText = css+(!unlockedGemUpg(id)?";display:none":"")

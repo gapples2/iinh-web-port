@@ -1,16 +1,16 @@
 const themes = {
   "Light":{
     color: "#000000",
-    bgColor: "#ffffff"
+    bgColor: "#ffffff",
+    gemTxtColor: "#0000ff",
+    refTxtColor: "#ff00ff",
   },
   "Dark":{
     bgColor: "#000000",
-    color: "#ffffff"
+    color: "#ffffff",
+    gemTxtColor: "#00ccff",
+    refTxtColor: "#ffccff",
   },
-  "Cancer":{
-    bgColor: "#00ff00",
-    color: "#ff0000"
-  }
 }
 
 function changeTheme(theme){
