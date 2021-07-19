@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Insert Incremental Name Here</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/style.css">
+    
+    <style>*{font-family: 'Montserrat', sans-serif;}</style>
+    
+    <script src="js/layers/upgrades.js" defer></script>
+    <script src="js/layers/gems.js" defer></script>
+    <script src="js/layers/refactor.js" defer></script>
+    <script src="js/layers/challenges.js" defer></script>
+    <script src="js/layers/research.js" defer></script>
+    
+    <script src="js/update.js" defer></script>
+    <script src="js/save.js" defer></script>
+    <script src="js/tabs.js" defer></script>
+    <script src="js/utils.js" defer></script>
+    <script src="js/theme.js" defer></script>
+    <script src="js/achievements.js" defer></script>
+    
+    <script src="js/game.js" defer></script>
+  </head>
+  <body style="text-align:center">
+    <div id="loading" style="font-size:30vh;height:100%;width:100%;padding-top:33.33vh">Loading</div>
+    <div style="display:none" id="game">
+      <h1>Points: <span id="num"></span></h1>
+      <span id="nps"></span>
+
+      <div id="tabs">
+        <button onclick="changeTab(0)" class="tab">Main</button>
+        <button onclick="changeTab(1)" class="tab">Options</button>
+        <button onclick="changeTab(5)" class="tab">Achievements</button>
+        <button onclick="changeTab(2)" class="tab" style="display:none" id="refactorTabButton">Refactor</button>
+        <button onclick="changeTab(3)" class="tab" style="display:none" id="challengeTabButton">Challenges</button>
+        <button onclick="changeTab(4)" class="tab" style="display:none" id="researchTabButton">Research</button>
+      </div>
+
+      <div id="tab0" style="display:none" class=""> <!-- Main -->
+        <h2>Upgrades</h2>
+        <div id="buyMax" style="display:none"><button onclick="buyMax()">Buy Max</button><br><br></div>
+        <div id="upgrades"></div>
+        <div id="gems" style="display:none">
+          <h2>Gems: <span id="gemAmt"></span></h2>
+          <h3>Next At: <span id="gemNextAt"></span> points</h3>
+          <div id="gemReset" style="display:none">
+            <button onclick="gemReset()">
+              Reset for 1 gem.
+            </button><br>
+          </div>
+          <h3>Gem Upgrades</h3>
+          <table id="gemUpgs" style="margin-left:auto;margin-right:auto;"></table><br>
+          <button onclick="respecGemUpgs()">Respec Upgrades</button>
+        </div>
+      </div>
+
+      <div id="tab1" style="display:none"> <!-- Options -->
+        <h2>Saving</h2>
+        <button id="save" onclick="save()" class="settings">Save</button>
+        <button id="load" onclick="load()" class="settings">Load</button><br>
+        <button id="export" onclick="exportSave()" class="settings">Export</button>
+        <button id="import" onclick="importSave()" class="settings">Import</button>
+        <button id="hardReset" onclick="hardReset()" class="settings">Hard Reset</button><br>
+        <button id="changeTheme" onclick="changeThemeButton()" class="settings" style="height:50px;width:204px">Current Theme: <span id="currentTheme"></span></button>
+      </div>
+
+      <div id="tab2" style="display:none"> <!-- Refactor -->
+        <h2>Refactors: <span id="rp"></span>, multiplying point gain by <span id="rpEff"></span></h2>
+        <h3>Next At: <span id="rpNextAt"></span> points</h3>
+        <div style="display:none" id="refactorReset"><button onclick="refactorReset()">Reset for 1 RP</button><br></div>
+        <h3>Refactor Milestones</h3>
+        <table id="reMilestones" style="margin-left:auto;margin-right:auto;width:75%;height:100px;"></table>
+      </div>
+
+      <div id="tab3" style="display:none"> <!-- Challenges -->
+        <h2>Challenges</h2>
+        <h3>You are in <b id="inChallenge"></b>.</h3>
+        <table id="challenges" style="margin-left:auto;margin-right:auto;"></table>
+      </div>
+      
+      <div id="tab4" style="display:none"> <!-- Research -->
+        <h2>Research: <span id="researchAmt"></span></h2>
+        <h3>Next at <span id="researchNextAt"></span> points</h3>
+        <div id="researchReset"><button onclick="researchReset()">Study for <span id="researchGain"></span> research</button><br><br></div>
+        <table id="research" style="margin-left:auto;margin-right:auto;"></table><br>
+        <button onclick="player.researchBuy=(player.researchBuy+1)%2">Buy: <span id="researchBuy"></span></button><br>
+        <span id="lookingAtResearch"></span><br>
+        <span style="color:green">Green bordered researches are recommended for you to get first.</span><br>
+        <span style="color:red">Red bordered researches are kept on next reset.</span><br><br>
+        <span style="display:none" id="rPSspan">You are getting <span id="researchPerSec"></span> research every second.</span>
+        <div id="autostudyDIV" style="display:none">
+          <br>Set to 0 to turn it off.<br>
+          Auto Study: <input id="autostudy" size="4"> [<span id="currentautostudy"></span>] <button id="setautostudy" onclick="player.autostudy=Number(document.getElementById('autostudy').value)">Set</button>
+        </div>
+      </div>
+      
+      <div id="tab5" style="display:none"> <!-- Achievements -->
+        <table id="achs" style="margin-left:auto;margin-right:auto;width:94px;height:94px"></table>
+      </div>
+    </div>
+    <div id="win" style="display:none">
+      <h1>You got to the current endgame! (15 refactors)</h1>
+      <h2>Thanks for playing, I (gapples2) spent a while working on this, and it's my 2nd project using vanilla JS.</h2>
+      Special thanks to randomtuba, as they were the one who made the original discord game (which is now finished).<br><br>
+      <button class="settings" onclick="hardReset(true)">Replay</button><button class="settings" onclick="document.getElementById('win').style.display='none';document.getElementById('game').style.display=''">Continue</button><br><br>
+      Special note: you can go past the current endgame but you will get reset back to 15 refactors on the next update.
+    </div>
+  </body>
+</html>

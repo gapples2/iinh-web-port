@@ -1,0 +1,33 @@
+Upgrades
+Successor adds +1 to gain
+Doubler makes gain 2x
+Quadrupler makes gain 4x
+Hexadecatupler makes gain 16x
+Squarer makes gain ^2
+Gems
+Gems are gained from points. This could be a prestige layer in your game, idk
+You can use gems to buy gem upgrades, such as tripling gain and stuff
+Refactor
+Refactor is a semi-forced reset that gives a multiplier and refactor points. Refactor points are used to unlock challenges and buy upgrades in the Research era.
+Challenges
+Challenges are able to be completed up to 5 times, and take place within a refactor. Challenges are harder refactors.
+Challenge 1 - Normal run (You are in this challenge by default)
+Challenge 2 - Slowmode (In your game, you can make it so production is divided by 10 or something)
+Challenge 3 - No refactor mult
+Challenge 4 - No gem upgrades
+Challenge 5 - All previous challenges
+Challenge 6 - Cube root
+Challenge 7 - Depends on options selected (Make your own challenge) (Takes place within an Omega run)
+Research
+You can buy Research Points with points. Research Points can be used to buy Research Upgrades.
+For example, one research unlocks 2 new refactor upgrades and gives you +5 refactor points.
+Another research unlocks Challenge 6.
+Most researches boost production
+Omega
+Once you reach 1.79e308 points, you can Omega, which resets your number, and gives you Omega Cubes and Omega Tesseracts.
+Omega Cubes can be spent on non-repeatable upgrades, and Omega Tesseracts can be spent on Compacts, which multiply production by 1e100x each.
+In your game, Omega should probably reset everything previous, and there could be milestones or QoL upgrades.
+Challenge 7
+Challenge 7 works like Hadronic Challenge in DI. You can turn different options on, and you get challenge score based on the amount of options turned on and how far you get.
+You must have at least 1.79e308 points to exit C7 with challenge score.
+Challenge 7 doesn't have a completion system.
